@@ -10,7 +10,7 @@
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
         </property>
         <property name="persistenceXmlLocation" value="classpath://META-INF/persistence.xml"/>
-        <property name="persistenceUnitName" value="Unit1"/>
+        <property name="persistenceUnitName" value="newshop"/>
     </bean>
 
     <bean class="org.springframework.orm.jpa.JpaTransactionManager" id="transactionManager">
