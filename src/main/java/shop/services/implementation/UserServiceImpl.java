@@ -1,4 +1,4 @@
-package shop_DB.services.implementation;
+package shop.services.implementation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 

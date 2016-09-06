@@ -27,7 +27,7 @@
             </security:user-service>
         </security:authentication-provider>
 
-        <security:authentication-provider user-service-ref="UserServiceImpl">
+        <security:authentication-provider user-service-ref="userServiceImpl">
             <security:password-encoder ref="encoder"/>
         </security:authentication-provider>
 
