@@ -21,8 +21,6 @@
         <setting name="provider-name" value="" />
         <datasource-mapping>
           <factory-entry name="MyWeb" />
-          <factory-entry name="Unit1" />
-          <factory-entry name="newshop" />
         </datasource-mapping>
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
       </configuration>
