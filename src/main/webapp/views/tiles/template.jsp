@@ -11,6 +11,17 @@
     <title>Title</title>
 </head>
 <body>
-
+<header>
+    <tiles:insertAttribute name="header"/>
+</header>
+<nav>
+    <tiles:insertAttribute name="menu"/>
+</nav>
+<section>
+    <tiles:insertAttribute name="body"/>
+</section>
+<footer>
+    <tiles:insertAttribute name="footer"/>
+</footer>
 </body>
 </html>
