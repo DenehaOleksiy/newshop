@@ -17,8 +17,6 @@ public class Category {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
     private List<Goods> goodsList;
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<SubCategory> subCategoryList;
 
     public Category() {
     }
@@ -47,11 +45,4 @@ public class Category {
         this.goodsList = goodsList;
     }
 
-    public List<SubCategory> getSubCategoryList() {
-        return subCategoryList;
-    }
-
-    public void setSubCategoryList(List<SubCategory> subCategoryList) {
-        this.subCategoryList = subCategoryList;
-    }
 }
