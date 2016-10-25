@@ -11,21 +11,21 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import shop.entity.Category;
+import shop.entity.Type;
 import shop.services.CategoryService;
 
 import java.util.List;
 
 @Controller
-public class CategoryController {
+public class TypeController {
 
     @Autowired
     private CategoryService categoryService;
 
     @RequestMapping(value = "/addNewCategory", method = RequestMethod.GET)
     public String addNewCategory(Model model){
-        List<Category> categoryList = categoryService.showAll();
-        model.addAttribute("category", categoryList);
+        List<Type> typeList = categoryService.showAll();
+        model.addAttribute("category", typeList);
         return "addCategory";
     }
 

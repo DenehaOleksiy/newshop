@@ -1,7 +1,7 @@
 package shop.services;
 
-import shop.DTO.GoodsDTO;
-import shop.entity.Goods;
+import shop.DTO.ProductDTO;
+import shop.entity.Product;
 
 import java.util.List;
 
@@ -10,19 +10,19 @@ import java.util.List;
  */
 public interface GoodsService {
 
-    List<GoodsDTO> showAllDto();
-    List<Goods>showAll();
-    Goods findOne(int id);
+    List<ProductDTO> showAllDto();
+    List<Product>showAll();
+    Product findOne(int id);
 
-    List<GoodsDTO>byCategoryDto(String name);
-    List<GoodsDTO>byBrandDto(String name);
-    GoodsDTO findOneDto(int id);
+    List<ProductDTO>byCategoryDto(String name);
+    List<ProductDTO>byBrandDto(String name);
+    ProductDTO findOneDto(int id);
 
-    void addOrEdit(Goods goods);
+    void addOrEdit(Product product);
     void delete(int id);
 
-    List<Goods>byCategory(String name);
-    List<Goods>byBrand(String name);
+    List<Product>byCategory(String name);
+    List<Product>byBrand(String name);
 
 }
 

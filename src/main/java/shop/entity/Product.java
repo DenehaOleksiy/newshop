@@ -7,7 +7,7 @@ import java.util.List;
  * Created by Администратор on 05.09.2016.
  */
 @Entity
-public class Goods {
+public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,14 +26,14 @@ public class Goods {
     @ManyToOne(fetch = FetchType.EAGER)
     private Brand brand;
     @ManyToOne(fetch = FetchType.EAGER)
-    private Category category;
+    private Type type;
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "goods")
     private List<Orders> ordersList;
     @ManyToMany
     @JoinTable(name = "user_goods", joinColumns = @JoinColumn(name = "goods"), inverseJoinColumns = @JoinColumn(name = "user"))
     private List<User>userList;
 
-    public Goods() {
+    public Product() {
     }
 
     public int getId() {
@@ -84,12 +84,12 @@ public class Goods {
         this.brand = brand;
     }
 
-    public Category getCategory() {
-        return category;
+    public Type getType() {
+        return type;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public List<Orders> getOrdersList() {

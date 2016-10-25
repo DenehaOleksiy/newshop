@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * Created by Администратор on 05.09.2016.
  */@Entity
-public class Category {
+public class Type {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +16,9 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<Goods> goodsList;
+    private List<Product> productList;
 
-    public Category() {
+    public Type() {
     }
 
     public int getId() {
@@ -37,12 +37,12 @@ public class Category {
         this.name = name;
     }
 
-    public List<Goods> getGoodsList() {
-        return goodsList;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setGoodsList(List<Goods> goodsList) {
-        this.goodsList = goodsList;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
 }

@@ -44,7 +44,7 @@ public class User {
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "user_goods", joinColumns = @JoinColumn(name = "user"), inverseJoinColumns = @JoinColumn(name = "goods"))
-    private List<Goods>goodsList;
+    private List<Product> productList;
 
     public User() {
         this.registrDate = Calendar.getInstance().getTime();
@@ -138,12 +138,12 @@ public class User {
         this.ordersList = ordersList;
     }
 
-    public List<Goods> getGoodsList() {
-        return goodsList;
+    public List<Product> getProductList() {
+        return productList;
     }
 
-    public void setGoodsList(List<Goods> goodsList) {
-        this.goodsList = goodsList;
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
     }
 
     public String getPasswConfirm() {

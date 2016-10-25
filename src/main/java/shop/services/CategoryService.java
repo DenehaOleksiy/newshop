@@ -1,7 +1,7 @@
 package shop.services;
 
 
-import shop.entity.Category;
+import shop.entity.Type;
 
 import java.util.List;
 
@@ -10,8 +10,8 @@ import java.util.List;
  */
 public interface CategoryService {
 
-    List<Category> showAll();
-    Category findOne(int id);
+    List<Type> showAll();
+    Type findOne(int id);
     void addCategory(String name);
     void delete(int id);
 }

@@ -19,7 +19,7 @@ public class Orders {
     private Date dateOrders;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private Goods goods;
+    private Product product;
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
@@ -43,12 +43,12 @@ public class Orders {
         this.dateOrders = dateOrders;
     }
 
-    public Goods getGoods() {
-        return goods;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setGoods(Goods goods) {
-        this.goods = goods;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public User getUser() {

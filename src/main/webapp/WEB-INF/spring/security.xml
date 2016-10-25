@@ -6,9 +6,9 @@
 
     <security:http>
         <security:intercept-url pattern="/" access="permitAll()"/>
-        <security:intercept-url pattern="/goods/add" access="hasRole('ROLE_ADMIN')"/>
-        <security:intercept-url pattern="/goods/delete/{id}" access="hasRole('ROLE_ADMIN')"/>
-        <security:intercept-url pattern="/goods/edit/{id}" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/product/add" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/product/delete/{id}" access="hasRole('ROLE_ADMIN')"/>
+        <security:intercept-url pattern="/product/edit/{id}" access="hasRole('ROLE_ADMIN')"/>
 
         <security:form-login login-page="/loginpage" login-processing-url="/loginprocessing"/>
 

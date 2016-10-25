@@ -1,12 +1,12 @@
 package shop.DTO;
 
 import shop.entity.Brand;
-import shop.entity.Category;
+import shop.entity.Type;
 
 /**
  * Created by Администратор on 15.09.2016.
  */
-public class GoodsDTO {
+public class ProductDTO {
 
     private  int id;
     private String name;
@@ -14,9 +14,9 @@ public class GoodsDTO {
     private String description;
     private String image;
     private Brand brand;
-    private Category category;
+    private Type type;
 
-    public GoodsDTO() {
+    public ProductDTO() {
     }
 
     public int getId() {
@@ -67,11 +67,11 @@ public class GoodsDTO {
         this.brand = brand;
     }
 
-    public Category getCategory() {
-        return category;
+    public Type getType() {
+        return type;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setType(Type type) {
+        this.type = type;
     }
 }

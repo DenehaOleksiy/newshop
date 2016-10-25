@@ -14,7 +14,7 @@ import java.util.List;
  * Created by Администратор on 05.09.2016.
  */
 @Controller
-public class HomeController {
+public class BaseController {
     @Autowired
     private UserService userService;
 

@@ -3,5 +3,5 @@ package shop.controllers;
 /**
  * Created by Администратор on 05.09.2016.
  */
-public class GoodsController {
+public class ProductController {
 }
