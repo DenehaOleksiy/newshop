@@ -11,6 +11,6 @@ import shop.entity.User;
  */
 public interface UserRepo extends JpaRepository<User,Integer> {
 
-    @Query("SELECT u FROM User u WHERE u.email LIKE :param OR u.phone LIKE :param")
-    User findUserByLogin(@Param("param")String login);
+    @Query("SELECT u FROM User u WHERE u.email LIKE :login")
+    User findUserByLogin(@Param("login") String login);
 }

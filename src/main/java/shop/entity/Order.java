@@ -7,24 +7,23 @@ import java.util.Date;
 /**
  * Created by Администратор on 05.09.2016.
  */
-@Entity
-public class Orders {
-
+@Entity (name = "Orders")
+public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
     @Column
     @Temporal(TemporalType.DATE)
-    private Date dateOrders;
-
+    private Date orderDate;
     @ManyToOne(fetch = FetchType.EAGER)
     private Product product;
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    public Orders() {
-        this.dateOrders = Calendar.getInstance().getTime();
+
+    public Order() {
+        this.orderDate= Calendar.getInstance().getTime();
     }
 
     public int getId() {
@@ -35,12 +34,12 @@ public class Orders {
         this.id = id;
     }
 
-    public Date getDateOrders() {
-        return dateOrders;
+    public Date getOrderDate() {
+        return orderDate;
     }
 
-    public void setDateOrders(Date dateOrders) {
-        this.dateOrders = dateOrders;
+    public void setOrderDate(Date orderDate) {
+        this.orderDate = orderDate;
     }
 
     public Product getProduct() {

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import shop.entity.Type;
-import shop.services.CategoryService;
+import shop.services.TypeService;
 
 import java.util.List;
 
@@ -20,26 +20,25 @@ import java.util.List;
 public class TypeController {
 
     @Autowired
-    private CategoryService categoryService;
+    private TypeService typeService;
 
-    @RequestMapping(value = "/addNewCategory", method = RequestMethod.GET)
-    public String addNewCategory(Model model){
-        List<Type> typeList = categoryService.showAll();
-        model.addAttribute("category", typeList);
-        return "addCategory";
+    @RequestMapping(value = "/addNewType", method = RequestMethod.GET)
+    public String addNewType(Model model){
+        List<Type> typeList = typeService.showAll();
+        model.addAttribute("types", typeList);
+        return "addType";
     }
 
-    @RequestMapping(value = "/addCategory/new", method = RequestMethod.POST)
-    public String addingCategory(@RequestParam("name")String name){
-        categoryService.addCategory(name);
-        return "redirect:/addNewCategory";
+    @RequestMapping(value = "/addType/new", method = RequestMethod.POST)
+    public String addingType(@RequestParam("name")String name){
+        typeService.addType(name);
+        return "redirect:/addNewType";
     }
 
-    @RequestMapping(value = "/deleteCategory/{id}", method = RequestMethod.POST)
-    public String deleteCategory(@PathVariable Integer id){
-        categoryService.delete(id);
+    @RequestMapping(value = "/deleteType/{id}", method = RequestMethod.POST)
+    public String deleteType(@PathVariable Integer id){
+        typeService.delete(id);
 
-        return "redirect:/addNewCategory";
+        return "redirect:/addNewType";
     }
 }
-

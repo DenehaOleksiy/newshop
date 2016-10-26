@@ -7,16 +7,14 @@ import java.util.List;
  * Created by Администратор on 05.09.2016.
  */@Entity
 public class Type {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
     @Column
     private String name;
-
-    @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    private List<Product> productList;
+    @OneToMany(mappedBy = "type", fetch = FetchType.EAGER)
+    private List<Product>productList;
 
     public Type() {
     }
@@ -44,5 +42,4 @@ public class Type {
     public void setProductList(List<Product> productList) {
         this.productList = productList;
     }
-
 }

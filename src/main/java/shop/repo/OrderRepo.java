@@ -1,10 +1,10 @@
 package shop.repo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import shop.entity.Type;
+import shop.entity.Order;
 
 /**
  * Created by Администратор on 05.09.2016.
  */
-public interface CategoryRepo extends JpaRepository<Type,Integer> {
+public interface OrderRepo extends JpaRepository<Order,Integer> {
 }

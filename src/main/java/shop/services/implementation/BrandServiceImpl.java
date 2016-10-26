@@ -39,5 +39,4 @@ public class BrandServiceImpl implements BrandService {
         brandRepo.delete(brand);
 
     }
-    }
-
+}

@@ -15,6 +15,7 @@ import java.util.List;
  */
 @Controller
 public class BaseController {
+
     @Autowired
     private UserService userService;
 
@@ -41,7 +42,7 @@ public class BaseController {
 
     @RequestMapping(value = "/allUsers", method = RequestMethod.GET)
     public  String allUsers(Model model){
-        List<User> userList = userService.findAll();
+        List<User>userList = userService.showAll();
         model.addAttribute("users", userList);
         return "allUsers";
     }
@@ -50,4 +51,6 @@ public class BaseController {
         return "socialPage";
     }
 
+
 }
+

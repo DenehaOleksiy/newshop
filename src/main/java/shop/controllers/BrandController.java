@@ -24,7 +24,7 @@ public class BrandController {
 
     @RequestMapping(value = "/addNewBrand", method = RequestMethod.GET)
     public String addNewBrand(Model model){
-        List<Brand> brandList = brandService.findAll();
+        List<Brand>brandList = brandService.findAll();
         model.addAttribute("brands", brandList);
         return "addBrand";
     }

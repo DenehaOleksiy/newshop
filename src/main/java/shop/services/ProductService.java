@@ -8,21 +8,24 @@ import java.util.List;
 /**
  * Created by Администратор on 05.09.2016.
  */
-public interface GoodsService {
+public interface ProductService {
 
-    List<ProductDTO> showAllDto();
+    List<ProductDTO>showAllDto();
     List<Product>showAll();
     Product findOne(int id);
 
-    List<ProductDTO>byCategoryDto(String name);
+    List<ProductDTO>byTypeDto(String name);
     List<ProductDTO>byBrandDto(String name);
     ProductDTO findOneDto(int id);
+
+//    ProductDTO findOneDto(int id);
 
     void addOrEdit(Product product);
     void delete(int id);
 
-    List<Product>byCategory(String name);
+    List<Product>byType(String name);
     List<Product>byBrand(String name);
 
+//    List<ProductDTO>byTypeDto(String name);
+//    List<ProductDTO>byBrandDto(String name);
 }
-

@@ -8,7 +8,6 @@ import java.util.List;
  */
 @Entity
 public class Product {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -19,18 +18,29 @@ public class Product {
     private int price;
     @Column
     private String description;
-    @Lob
     @Column
-    private byte [] images;
+    private String full_description;
+    @Column
+    @Lob
+    private byte[] image;
+
+    public List<User> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<User> userList) {
+        this.userList = userList;
+    }
 
     @ManyToOne(fetch = FetchType.EAGER)
+
     private Brand brand;
     @ManyToOne(fetch = FetchType.EAGER)
     private Type type;
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "goods")
-    private List<Orders> ordersList;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "product")
+    private List<Order>orderList;
     @ManyToMany
-    @JoinTable(name = "user_goods", joinColumns = @JoinColumn(name = "goods"), inverseJoinColumns = @JoinColumn(name = "user"))
+    @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "product"), inverseJoinColumns = @JoinColumn(name = "user"))
     private List<User>userList;
 
     public Product() {
@@ -68,12 +78,20 @@ public class Product {
         this.description = description;
     }
 
-    public byte[] getImages() {
-        return images;
+    public String getFull_description() {
+        return full_description;
     }
 
-    public void setImages(byte[] images) {
-        this.images = images;
+    public void setFull_description(String full_description) {
+        this.full_description = full_description;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
     }
 
     public Brand getBrand() {
@@ -92,19 +110,12 @@ public class Product {
         this.type = type;
     }
 
-    public List<Orders> getOrdersList() {
-        return ordersList;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setOrdersList(List<Orders> ordersList) {
-        this.ordersList = ordersList;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
-    public List<User> getUserList() {
-        return userList;
-    }
-
-    public void setUserList(List<User> userList) {
-        this.userList = userList;
-    }
 }

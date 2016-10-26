@@ -21,94 +21,53 @@ import javax.persistence.NoResultException;
 import java.util.*;
 
 /**
- * Created by Администратор on 14.07.2016.
+ * Created by Администратор on 14.09.2016.
  */
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
+public class UserServiceImpl implements UserService, UserDetailsService{
     @Autowired
     private UserRepo userRepo;
 
+
     public void add(User user) {
-        userRepo.save(user);
+        userRepo.saveAndFlush(user);
     }
 
-    public void edit(User user) {
-        userRepo.save(user);
+    @Override
+    public List<User> showAll() {
+        return userRepo.findAll();
     }
 
-    public void remove(int id) {
-        userRepo.delete(id);
-    }
-
-    public User findOneById(int id) {
-        return userRepo.findOne(id);
-    }
-
-    public List<User> findAll() {
+    public List<User> allUsers() {
         return userRepo.findAll();
     }
 
 
-    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+
+
+    @Override
+    public UserDetails loadUserByUsername(String l) throws UsernameNotFoundException {
         User user;
+
         try {
-            user = userRepo.findUserByLogin(login);
-        } catch (NoResultException e) {
-            return null;
+            user = userRepo.findUserByLogin(l);
+            if(!user.isEnabled()){
+                return null;
+            }
         }
-        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
-        authorities.add(new SimpleGrantedAuthority("ROLE_USER"));
-        return new org.springframework.security.core.userdetails.User(String.valueOf(user.getId()),user.getPassword(),authorities);
+        catch (NoResultException e){
+            return  null;
+        }
+        Collection<SimpleGrantedAuthority>grantedAuthorities = new ArrayList<>();
+        SimpleGrantedAuthority simpleGrantedAuthority = new SimpleGrantedAuthority("ROLE_USER");
+        grantedAuthorities.add(simpleGrantedAuthority);
+
+        return new org.springframework.security.core.userdetails.User(String.valueOf(user.getId()), user.getPassword(), grantedAuthorities);
     }
 
 
     @Override
-    public void sendEmail(int id, String email, String userName, String password, String registrationVar) {
-
-        try{
-
-            Properties props = new Properties();
-            props.put("mail.smtp.host", "smtp.gmail.com");
-            props.put("mail.smtp.auth", "true");
-            props.put("mail.debug", "true");
-            props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.port", "465");
-            props.put("mail.smtp.socketFactory.port", "465");
-            props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-            props.put("mail.smtp.socketFactory.fallback", "false");
-
-            Session mailSession = Session.getInstance(props, new javax.mail.Authenticator() {
-
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication("alex.lviv.1975@gmail.com", "gelios1975");
-                }
-            });
-
-            mailSession.setDebug(true); // Enable the debug mode
-
-            Message msg = new MimeMessage( mailSession );
-
-            msg.setFrom( new InternetAddress( "alex.lviv.1975@gmail.com" ) );
-            msg.setRecipients( Message.RecipientType.TO,InternetAddress.parse(email) );
-            msg.setSentDate( new Date());
-            msg.setSubject( "Registration" );
-
-
-            registrationVar = registrationVar.replace(".", "-");
-
-
-            msg.setText( "Hello " + userName + ",\n You'r login: " + email + "\n You'r password: " + password
-                    + "\n Please copy this link and follow them\n Registration link:   localhost:8080/registration/" + registrationVar);
-
-            Transport.send( msg );
-
-        }catch(Exception E){
-            System.out.println( "Oops something has gone wrong!");
-            System.out.println( E );
-        }
-
-
+    public User findOne(int id) {
+        return userRepo.findOne(id);
     }
-
-
 }

@@ -8,16 +8,14 @@ import java.util.List;
  */
 @Entity
 public class Brand {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
     @Column
     private String name;
-
     @OneToMany(mappedBy = "brand", fetch = FetchType.EAGER)
-    private List<Product> productList;
+    private List<Product>productList;
 
     public Brand() {
     }

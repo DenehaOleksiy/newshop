@@ -7,16 +7,32 @@ import shop.entity.Type;
  * Created by Администратор on 15.09.2016.
  */
 public class ProductDTO {
-
     private  int id;
     private String name;
     private int price;
     private String description;
+    private String full_description;
     private String image;
     private Brand brand;
     private Type type;
 
     public ProductDTO() {
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
     }
 
     public int getId() {
@@ -51,27 +67,19 @@ public class ProductDTO {
         this.description = description;
     }
 
+    public String getFull_description() {
+        return full_description;
+    }
+
+    public void setFull_description(String full_description) {
+        this.full_description = full_description;
+    }
+
     public String getImage() {
         return image;
     }
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brand) {
-        this.brand = brand;
-    }
-
-    public Type getType() {
-        return type;
-    }
-
-    public void setType(Type type) {
-        this.type = type;
     }
 }

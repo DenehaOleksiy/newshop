@@ -10,44 +10,47 @@ import java.util.List;
  */
 @Entity
 public class User {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private int id;
-    @Column
-    private String name;
-    @Column
-    private String secondName;
-    @Column
-    @Temporal(TemporalType.DATE)
-    private Date registrDate;
-    @Column
-    private String password;
-    @Transient
-    @Column
-    private String passwConfirm;
+    //    @Column
+//    private String name;
+//    @Column
+//    private String lastName;
     @Column
     private String email;
     @Column
-    private String phone;
+    private String password;
     @Column
-    private boolean enable = true;
+    private boolean enabled = true;
     @Column
-    private int quantity;
+    private int totalCartSum;
     @Column
-    private int summa;
+    private int cartQuantity;
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date birth;
+    @Column
+    @Temporal(TemporalType.DATE)
+    private Date registration;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
-    private List<Orders> ordersList;
+    private List<Order>orderList;
+
+    public List<Product> getProductList() {
+        return productList;
+    }
+
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_goods", joinColumns = @JoinColumn(name = "user"), inverseJoinColumns = @JoinColumn(name = "goods"))
-    private List<Product> productList;
+    @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "user"), inverseJoinColumns = @JoinColumn(name = "product"))
+    private List<Product>productList;
 
     public User() {
-        this.registrDate = Calendar.getInstance().getTime();
     }
 
     public int getId() {
@@ -58,28 +61,28 @@ public class User {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+//    public String getName() {
+//        return name;
+//    }
+//
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+//
+//    public String getLastName() {
+//        return lastName;
+//    }
+//
+//    public void setLastName(String lastName) {
+//        this.lastName = lastName;
+//    }
+
+    public String getEmail() {
+        return email;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSecondName() {
-        return secondName;
-    }
-
-    public void setSecondName(String secondName) {
-        this.secondName = secondName;
-    }
-
-    public Date getRegistrDate() {
-        return registrDate;
-    }
-
-    public void setRegistrDate(Date registrDate) {
-        this.registrDate = registrDate;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -90,67 +93,53 @@ public class User {
         this.password = password;
     }
 
-    public String getEmail() {
-        return email;
+
+    public boolean isEnabled() {
+
+        return enabled;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 
-    public String getPhone() {
-        return phone;
+    public Date getBirth() {
+        return birth;
     }
 
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setBirth(Date birth) {
+        this.birth = birth;
     }
 
-    public boolean isEnable() {
-        return enable;
+    public Date getRegistration() {
+        return registration;
     }
 
-    public void setEnable(boolean enable) {
-        this.enable = enable;
+    public void setRegistration(Date registration) {
+        this.registration = registration;
     }
 
-    public int getQuantity() {
-        return quantity;
+    public List<Order> getOrderList() {
+        return orderList;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setOrderList(List<Order> orderList) {
+        this.orderList = orderList;
     }
 
-    public int getSumma() {
-        return summa;
+    public int getTotalCartSum() {
+        return totalCartSum;
     }
 
-    public void setSumma(int summa) {
-        this.summa = summa;
+    public void setTotalCartSum(int totalCartSum) {
+        this.totalCartSum = totalCartSum;
     }
 
-    public List<Orders> getOrdersList() {
-        return ordersList;
+    public int getCartQuantity() {
+        return cartQuantity;
     }
 
-    public void setOrdersList(List<Orders> ordersList) {
-        this.ordersList = ordersList;
-    }
-
-    public List<Product> getProductList() {
-        return productList;
-    }
-
-    public void setProductList(List<Product> productList) {
-        this.productList = productList;
-    }
-
-    public String getPasswConfirm() {
-        return passwConfirm;
-    }
-
-    public void setPasswConfirm(String passwConfirm) {
-        this.passwConfirm = passwConfirm;
+    public void setCartQuantity(int cartQuantity) {
+        this.cartQuantity = cartQuantity;
     }
 }
